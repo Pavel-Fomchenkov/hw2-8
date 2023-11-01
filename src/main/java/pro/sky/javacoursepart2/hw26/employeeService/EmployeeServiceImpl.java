@@ -1,12 +1,14 @@
 package pro.sky.javacoursepart2.hw26.employeeService;
 
 import org.springframework.stereotype.Service;
-import pro.sky.javacoursepart2.hw26.Employee;
+import pro.sky.javacoursepart2.hw26.model.Employee;
 import pro.sky.javacoursepart2.hw26.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.javacoursepart2.hw26.exceptions.EmployeeNotFoundException;
 import pro.sky.javacoursepart2.hw26.exceptions.EmployeeStorageIsFullException;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -50,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getEmployees() {
-        return this.employees;
+    public Collection<Employee> getEmployees() {
+        return Collections.unmodifiableList(employees);
     }
 }

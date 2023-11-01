@@ -1,4 +1,4 @@
-package pro.sky.javacoursepart2.hw26;
+package pro.sky.javacoursepart2.hw26.model;
 
 import java.util.Objects;
 

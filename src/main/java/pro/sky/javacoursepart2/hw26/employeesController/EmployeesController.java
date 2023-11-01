@@ -2,10 +2,10 @@ package pro.sky.javacoursepart2.hw26.employeesController;
 
 import org.springframework.web.bind.annotation.*;
 
-import pro.sky.javacoursepart2.hw26.Employee;
+import pro.sky.javacoursepart2.hw26.model.Employee;
 import pro.sky.javacoursepart2.hw26.employeeService.EmployeeServiceImpl;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/employee")
@@ -17,7 +17,7 @@ public class EmployeesController {
     }
 
     @GetMapping
-    public List<Employee> getEmployees() {
+    public Collection<Employee> getEmployees() {
         return employees.getEmployees();
     }
 
