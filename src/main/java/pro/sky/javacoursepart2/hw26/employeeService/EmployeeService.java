@@ -2,12 +2,14 @@ package pro.sky.javacoursepart2.hw26.employeeService;
 
 import pro.sky.javacoursepart2.hw26.Employee;
 
-public interface EmployeeService {
-    void addEmployee(String firstName, String lastName);
+import java.util.List;
 
-    void removeEmployee(String firstName, String lastName);
+public interface EmployeeService {
+    Employee addEmployee(String firstName, String lastName);
+
+    Employee removeEmployee(String firstName, String lastName);
 
     Employee findEmployee(String firstName, String lastName);
 
-    String printEmployees();
+    List<Employee> getEmployees();
 }

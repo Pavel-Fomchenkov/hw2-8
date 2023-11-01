@@ -1,37 +1,42 @@
 package pro.sky.javacoursepart2.hw26.employeesController;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import pro.sky.javacoursepart2.hw26.Employee;
 import pro.sky.javacoursepart2.hw26.employeeService.EmployeeServiceImpl;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeesController {
     private final EmployeeServiceImpl employees;
+
     private EmployeesController(EmployeeServiceImpl employees) {
         this.employees = employees;
     }
+
     @GetMapping
-    public String greetings() {
-        return "<b>База данных сотрудников: \n</b>" + employees.printEmployees();
+    public List<Employee> getEmployees() {
+        return employees.getEmployees();
     }
+
     @GetMapping("/add")
-    public String addEmployee(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName) {
-        employees.addEmployee(firstName, lastName);
-        return "Новый сотрудник: " + firstName + " " + lastName + " успешно добавлен в БД.";
+    public Employee addEmployee(@RequestParam(value = "firstName") String firstName,
+                                @RequestParam(value = "lastName") String lastName) {
+            return employees.addEmployee(firstName, lastName);
     }
 
     @GetMapping("/find")
-    public String findEmployee(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName) {
-        return "Сотрудник: " + employees.findEmployee(firstName, lastName).toString() + " содержится в БД.";
+    public Employee findEmployee(@RequestParam(value = "firstName") String firstName,
+                                 @RequestParam(value = "lastName") String lastName) {
+        return employees.findEmployee(firstName, lastName);
     }
+
     @GetMapping("/remove")
-    public String removeEmployee(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName) {
-        employees.removeEmployee(firstName, lastName);
-        return "Сотрудник: " + firstName + " " + lastName + " удален из БД.";
+    public Employee removeEmployee(@RequestParam(value = "firstName") String firstName,
+                                   @RequestParam(value = "lastName") String lastName) {
+        return employees.removeEmployee(firstName, lastName);
     }
 
 }
