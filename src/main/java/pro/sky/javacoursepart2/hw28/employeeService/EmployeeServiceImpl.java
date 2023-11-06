@@ -39,11 +39,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee removeEmployee(String firstName, String lastName) {
-        Employee e = findEmployee(firstName, lastName);
         String key = generateEmployeesMapKey(firstName, lastName);
         if (employees.containsKey(key)) {
-            employees.remove(key);
-            return e;
+            return employees.remove(key);
         }
         throw new EmployeeNotFoundException("Указанный сотрудник отсутвует в базе данных.");
     }
