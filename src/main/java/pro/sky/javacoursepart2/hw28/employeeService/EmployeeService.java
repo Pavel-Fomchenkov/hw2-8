@@ -1,6 +1,6 @@
-package pro.sky.javacoursepart2.hw26.employeeService;
+package pro.sky.javacoursepart2.hw28.employeeService;
 
-import pro.sky.javacoursepart2.hw26.model.Employee;
+import pro.sky.javacoursepart2.hw28.model.Employee;
 
 import java.util.Collection;
 

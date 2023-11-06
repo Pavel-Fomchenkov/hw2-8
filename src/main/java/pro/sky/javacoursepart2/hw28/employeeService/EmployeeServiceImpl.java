@@ -1,10 +1,10 @@
-package pro.sky.javacoursepart2.hw26.employeeService;
+package pro.sky.javacoursepart2.hw28.employeeService;
 
 import org.springframework.stereotype.Service;
-import pro.sky.javacoursepart2.hw26.model.Employee;
-import pro.sky.javacoursepart2.hw26.exceptions.EmployeeAlreadyAddedException;
-import pro.sky.javacoursepart2.hw26.exceptions.EmployeeNotFoundException;
-import pro.sky.javacoursepart2.hw26.exceptions.EmployeeStorageIsFullException;
+import pro.sky.javacoursepart2.hw28.model.Employee;
+import pro.sky.javacoursepart2.hw28.exceptions.EmployeeAlreadyAddedException;
+import pro.sky.javacoursepart2.hw28.exceptions.EmployeeNotFoundException;
+import pro.sky.javacoursepart2.hw28.exceptions.EmployeeStorageIsFullException;
 
 import java.util.ArrayList;
 import java.util.Collection;

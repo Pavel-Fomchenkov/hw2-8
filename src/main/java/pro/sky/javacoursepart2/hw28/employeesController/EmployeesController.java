@@ -1,9 +1,9 @@
-package pro.sky.javacoursepart2.hw26.employeesController;
+package pro.sky.javacoursepart2.hw28.employeesController;
 
 import org.springframework.web.bind.annotation.*;
 
-import pro.sky.javacoursepart2.hw26.model.Employee;
-import pro.sky.javacoursepart2.hw26.employeeService.EmployeeServiceImpl;
+import pro.sky.javacoursepart2.hw28.model.Employee;
+import pro.sky.javacoursepart2.hw28.employeeService.EmployeeServiceImpl;
 
 import java.util.Collection;
 
