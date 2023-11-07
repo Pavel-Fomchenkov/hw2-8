@@ -12,7 +12,7 @@ import java.util.*;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final int maxEmployees = 3;
-    private final Map<String, Employee> employees = new HashMap(maxEmployees);
+    private final Map<String, Employee> employees = new HashMap();
 
     @Override
     public Employee addEmployee(String firstName, String lastName) {
