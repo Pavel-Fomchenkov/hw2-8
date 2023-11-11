@@ -47,8 +47,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Collection<Employee> getEmployees() {
-        return Map.copyOf(employees).values();
+    public Map<String, Employee> getEmployees() {
+        return Collections.unmodifiableMap(employees);
     }
 
     private String generateEmployeesMapKey(String firstName, String lastName) {

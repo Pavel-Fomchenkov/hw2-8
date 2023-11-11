@@ -6,6 +6,7 @@ import pro.sky.javacoursepart2.hw28.model.Employee;
 import pro.sky.javacoursepart2.hw28.employeeService.EmployeeServiceImpl;
 
 import java.util.Collection;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -17,7 +18,7 @@ public class EmployeesController {
     }
 
     @GetMapping
-    public Collection<Employee> getEmployees() {
+    public Map<String, Employee> getEmployees() {
         return employees.getEmployees();
     }
 
