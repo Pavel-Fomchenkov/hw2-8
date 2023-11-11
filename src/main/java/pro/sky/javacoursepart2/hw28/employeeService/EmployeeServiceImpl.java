@@ -6,53 +6,52 @@ import pro.sky.javacoursepart2.hw28.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.javacoursepart2.hw28.exceptions.EmployeeNotFoundException;
 import pro.sky.javacoursepart2.hw28.exceptions.EmployeeStorageIsFullException;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final int maxEmployees = 3;
-    private final List<Employee> employees = new ArrayList<>(maxEmployees);
+    private final Map<String, Employee> employees = new HashMap();
 
     @Override
     public Employee addEmployee(String firstName, String lastName) {
         Employee e = new Employee(firstName, lastName);
-        if (employees.contains(e)) {
+        String key = generateEmployeesMapKey(firstName, lastName);
+        if (employees.containsKey(key)) {
             throw new EmployeeAlreadyAddedException("В базе данных уже содержится данный сотрудник.");
         }
         if (employees.size() == maxEmployees) {
             throw new EmployeeStorageIsFullException("База данных переполнена.");
         }
-        employees.add(e);
+        employees.put(key, e);
         return e;
     }
 
     @Override
     public Employee findEmployee(String firstName, String lastName) {
-        Employee e = new Employee(firstName, lastName);
-        for (int i = 0; i < employees.size(); i++) {
-            if (e.equals(employees.get(i))) {
-                return employees.get(i);
-            }
+        String key = generateEmployeesMapKey(firstName, lastName);
+        if (employees.containsKey(key)) {
+            return employees.get(key);
         }
         throw new EmployeeNotFoundException("Указанный сотрудник отсутвует в базе данных.");
     }
 
     @Override
     public Employee removeEmployee(String firstName, String lastName) {
-        Employee e = findEmployee(firstName, lastName);
-        if (employees.contains(e)) {
-            employees.remove(e);
-            return e;
+        String key = generateEmployeesMapKey(firstName, lastName);
+        if (employees.containsKey(key)) {
+            return employees.remove(key);
         }
         throw new EmployeeNotFoundException("Указанный сотрудник отсутвует в базе данных.");
     }
 
     @Override
-    public Collection<Employee> getEmployees() {
-        return Collections.unmodifiableList(employees);
+    public Map<String, Employee> getEmployees() {
+        return Collections.unmodifiableMap(employees);
+    }
+
+    private String generateEmployeesMapKey(String firstName, String lastName) {
+        return firstName + lastName;
     }
 }
